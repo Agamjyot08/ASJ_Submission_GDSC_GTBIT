@@ -1,6 +1,7 @@
 package com.example.fomo.ui
 
 import android.app.Activity
+import android.app.Application
 
 import android.content.Context
 import android.content.Intent
@@ -16,11 +17,14 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fomo.Networking.FoodItem
 import com.example.fomo.Networking.Weather
 import com.example.fomo.Networking.retrofitInstance
 import com.example.fomo.R
+import com.example.fomo.database.FoodEntity
 import com.example.fomo.databinding.FragmentWeatherBinding
 import com.example.fomo.utils.Constants
 import com.example.fomo.utils.FoodAdapter
@@ -44,8 +48,9 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
     private lateinit var  adapter :FoodAdapter
     private lateinit var binding : FragmentWeatherBinding
     private lateinit var sharedPreferences: SharedPreferences
+    lateinit var foodViewModel: FoodViewModel
 
-    private val viewModel : FoodViewModel by viewModels<FoodViewModel>()
+    //private val viewModel : FoodViewModel by viewModels<FoodViewModel>()
 
     lateinit var weatherres : String
 
@@ -53,6 +58,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
         super.onCreate(savedInstanceState)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(activity as Activity)
         ActivityResultContracts.RequestPermission()
+        foodViewModel=ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(FoodViewModel::class.java)
 
     }
 
@@ -69,6 +75,18 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
         binding.recylerViewFoodWeather.layoutManager = LinearLayoutManager(activity as Context)
         adapter = FoodAdapter(this)
         binding.recylerViewFoodWeather.adapter = adapter
+        foodViewModel.allFoodItem.observe(viewLifecycleOwner, Observer { list->
+            list.let {
+                val favList:ArrayList<FoodItem> =ArrayList()
+                for(element in it)
+                {
+                    favList.add(FoodItem(element.description,element.image,element.name,element.recipe))
+                }
+                Log.d("FavWeather",favList.toString())
+                adapter.addFavList(favList)
+
+            }
+        })
     }
 
     private suspend fun Foodfetchdata() {
@@ -195,6 +213,14 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
 
     override fun onOrderClicked(item: FoodItem) {
         TODO("Not yet implemented")
+    }
+
+    override fun insertFav(item: FoodEntity) {
+        foodViewModel.insertFood(item)
+    }
+
+    override fun deleteFav(item: FoodEntity) {
+        foodViewModel.deleteFood(item)
     }
 
 //    private fun apicall(latitude: Double, longitude: Double) {

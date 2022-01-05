@@ -7,15 +7,19 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fomo.Networking.FoodItem
 import com.example.fomo.Networking.retrofitInstance
 import com.example.fomo.R
+import com.example.fomo.database.FoodEntity
 import com.example.fomo.databinding.FragmentLocationBinding
 import com.example.fomo.utils.Constants
 import com.example.fomo.utils.FoodAdapter
@@ -40,11 +44,13 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
     lateinit var longitute : String
     lateinit var latitude : String
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var foodViewModel: FoodViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Inflate the layout for this fragment
         ActivityResultContracts.RequestPermission()
+        foodViewModel=ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(FoodViewModel::class.java)
     }
     private fun CheckPermisssion(){
         val task : Task<Location> = fusedLocationProviderClient.lastLocation
@@ -78,6 +84,18 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
         binding.recylerViewfoodweather.layoutManager = LinearLayoutManager(activity as Context)
         adapter = FoodAdapter(this)
         binding.recylerViewfoodweather.adapter = adapter
+        foodViewModel.allFoodItem.observe(viewLifecycleOwner, Observer {list->
+            list.let {
+                val favList:ArrayList<FoodItem> = ArrayList()
+                for(element in it)
+                {
+                    favList.add(FoodItem(element.description,element.image,element.name,element.recipe))
+
+                }
+                Log.d("Fav",favList.toString())
+                adapter.addFavList(favList)
+            }
+        })
         if(activity!=null) {
             sharedPreferences =
                 activity?.getSharedPreferences(Constants.SHARED_PREFERENCE, Context.MODE_PRIVATE)!!
@@ -129,6 +147,14 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
 
     override fun onOrderClicked(item: FoodItem) {
 
+    }
+
+    override fun insertFav(item: FoodEntity) {
+        foodViewModel.insertFood(item)
+    }
+
+    override fun deleteFav(item: FoodEntity) {
+        foodViewModel.deleteFood(item)
     }
 
 }
