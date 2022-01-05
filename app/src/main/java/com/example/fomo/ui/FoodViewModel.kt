@@ -1,18 +1,27 @@
 package com.example.fomo.ui
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.fomo.Networking.FoodItem
 import com.example.fomo.Networking.Weather
+import com.example.fomo.Networking.retrofitService
+import com.example.fomo.database.FoodDatabase
+import com.example.fomo.database.FoodEntity
 import com.example.fomo.repository.FoodRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 
-class FoodViewModel constructor(private val repository: FoodRepository)  : ViewModel() {
+class FoodViewModel constructor(application: Application,retrofitService: retrofitService)  : AndroidViewModel(application) {
 
+val allFoodItem:LiveData<List<FoodEntity>>
+val repository:FoodRepository
+    init {
+        val foodDao=FoodDatabase.getDatabase(application).getFoodDao()
+        repository= FoodRepository(foodDao,retrofitService)
+        allFoodItem=repository.allFoodItem
+    }
     private val _weatherres: MutableLiveData<Call<Weather>> = MutableLiveData()
     val weatherres: LiveData<Call<Weather>>
         get() = _weatherres
@@ -39,4 +48,13 @@ class FoodViewModel constructor(private val repository: FoodRepository)  : ViewM
         Log.d("LogFoodViewModel2", latitude.toString())
         _locationres.value = repository.getLocationDishes(latitude, longitude)
     }
+    fun insertFood(foodEntity: FoodEntity)=viewModelScope.launch(Dispatchers.IO)
+    {
+        repository.insertFood(foodEntity)
+    }
+    fun deleteFood(foodEntity: FoodEntity)=viewModelScope.launch(Dispatchers.IO){
+        repository.deleteFood(foodEntity)
+    }
+    fun getFoodByID(id:Int):FoodEntity=repository.getFoodById(id)
+
 }
