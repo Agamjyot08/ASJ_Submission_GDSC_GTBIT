@@ -8,6 +8,7 @@ import retrofit2.http.Query
 
 class FoodRepository (private val foodDao: FoodDao,private val retrofitService: retrofitService) {
 
+val allFoodItem:LiveData<List<FoodEntity>> = foodDao.getAllFood()
 
     suspend fun getDishes(weather:String) = retrofitService.getDishes(weather)
 
@@ -21,5 +22,9 @@ class FoodRepository (private val foodDao: FoodDao,private val retrofitService: 
     suspend fun deleteFood(foodEntity: FoodEntity)
     {
         foodDao.deleteFood(foodEntity)
+    }
+    fun getFoodById(id:Int):FoodEntity
+    {
+        return foodDao.getFoodById(id)
     }
 }

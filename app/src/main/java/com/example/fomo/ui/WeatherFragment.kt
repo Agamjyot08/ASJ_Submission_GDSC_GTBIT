@@ -147,36 +147,36 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
 
 
 
-//    private fun apicall(latitude: Double, longitude: Double) {
-//        val instance = retrofitInstance.api.getWeather(latitude.toString(),longitude.toString())
-//        instance.enqueue(object : Callback<Weather>{
-//            override fun onResponse(call: retrofit2.Call<Weather>, response: Response<Weather>) {
-//               val weather = response.body()
-//                if(weather!=null){
-//                    binding.cityTv.text = "${weather.city}"
-//                    val temp="${weather.temperature}°C"
-//                    binding.tempTv.text = temp
-//                    if(activity!=null) {
-//                        sharedPreferences = activity?.getSharedPreferences(
-//                            Constants.SHARED_PREFERENCE,
-//                            Context.MODE_PRIVATE
-//                        )!!
-//                        sharedPreferences.edit().putString(Constants.CITY,weather.city).apply()
-//                        sharedPreferences.edit().putString(Constants.TEMP,temp).apply()
-//                    }
-//                    ResultWeather(weather.feelslike,weather.description)
-//
-//
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<Weather>, t: Throwable) {
-//                Toast.makeText(activity as Context,"Failed", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
-//
-//    }
+    private fun apicall(latitude: Double, longitude: Double) {
+        val instance = retrofitInstance.api.getWeather(latitude.toString(),longitude.toString())
+        instance.enqueue(object : Callback<Weather>{
+            override fun onResponse(call: retrofit2.Call<Weather>, response: Response<Weather>) {
+               val weather = response.body()
+                if(weather!=null){
+                    binding.cityTv.text = "${weather.city}"
+                    val temp="${weather.temperature}°C"
+                    binding.tempTv.text = temp
+                    if(activity!=null) {
+                        sharedPreferences = activity?.getSharedPreferences(
+                            Constants.SHARED_PREFERENCE,
+                            Context.MODE_PRIVATE
+                        )!!
+                        sharedPreferences.edit().putString(Constants.CITY,weather.city).apply()
+                        sharedPreferences.edit().putString(Constants.TEMP,temp).apply()
+                    }
+                    ResultWeather(weather.feelslike,weather.description)
+
+
+                }
+            }
+
+            override fun onFailure(call: Call<Weather>, t: Throwable) {
+                Toast.makeText(activity as Context,"Failed", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+    }
 
     private fun RequestPermission(){
         ActivityCompat.requestPermissions(activity as Activity,
@@ -197,62 +197,62 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
         TODO("Not yet implemented")
     }
 
-    private fun apicall(latitude: Double, longitude: Double) {
-
-        Log.d("LogLatitude", latitude.toString())
-        Log.d("LogLongitude", longitude.toString())
-        viewModel.apply {
-            getWeather(latitude.toString(), longitude.toString())
-            weatherres.observe(viewLifecycleOwner) {
-                when (it) {
-                    is Resource.Success -> {
-                        progress.hideProgress()
-                        if (!it.value.error) {
-                            try {
-                                visitItems.clear()
-                                visitList.clear()
-                                visitList.addAll(it.value.data)
-                                for (i in visitList.indices) {
-                                    visitItems.add(it.value.data[i])
-                                }
-                                setupVisitRecycler(visitItems)
-                                binding.visitStatus.text = ""
-                            } catch (e: NullPointerException) {
-                                Toast.makeText(
-                                    requireActivity(),
-                                    "oops..! Something went wrong.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        } else if (it.value.error) {
-                            if (flag == 0) {
-                                flag++
-                                Toast.makeText(
-                                    requireContext(),
-                                    it.value.message.toString(),
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                binding.visitStatus.text = "No Visits Today!"
-                            }
-                            visitItems.clear()
-                            setupVisitRecycler(visitItems)
-                        }
-                    }
-                    is Resource.Failure -> {
-                        progress.hideProgress()
-                        Toast.makeText(requireContext(), "Failed.", Toast.LENGTH_SHORT).show()
-                    }
-                    is Resource.Loading -> {
-                        if (progress.mDialog?.isShowing == true) {
-                            progress.hideProgress()
-                        } else {
-                            progress.showProgress(requireContext())
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    private fun apicall(latitude: Double, longitude: Double) {
+//
+//        Log.d("LogLatitude", latitude.toString())
+//        Log.d("LogLongitude", longitude.toString())
+//        viewModel.apply {
+//            getWeather(latitude.toString(), longitude.toString())
+//            weatherres.observe(viewLifecycleOwner) {
+//                when (it) {
+//                    is Resource.Success -> {
+//                        progress.hideProgress()
+//                        if (!it.value.error) {
+//                            try {
+//                                visitItems.clear()
+//                                visitList.clear()
+//                                visitList.addAll(it.value.data)
+//                                for (i in visitList.indices) {
+//                                    visitItems.add(it.value.data[i])
+//                                }
+//                                setupVisitRecycler(visitItems)
+//                                binding.visitStatus.text = ""
+//                            } catch (e: NullPointerException) {
+//                                Toast.makeText(
+//                                    requireActivity(),
+//                                    "oops..! Something went wrong.",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                        } else if (it.value.error) {
+//                            if (flag == 0) {
+//                                flag++
+//                                Toast.makeText(
+//                                    requireContext(),
+//                                    it.value.message.toString(),
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                                binding.visitStatus.text = "No Visits Today!"
+//                            }
+//                            visitItems.clear()
+//                            setupVisitRecycler(visitItems)
+//                        }
+//                    }
+//                    is Resource.Failure -> {
+//                        progress.hideProgress()
+//                        Toast.makeText(requireContext(), "Failed.", Toast.LENGTH_SHORT).show()
+//                    }
+//                    is Resource.Loading -> {
+//                        if (progress.mDialog?.isShowing == true) {
+//                            progress.hideProgress()
+//                        } else {
+//                            progress.showProgress(requireContext())
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 
 
 }
