@@ -1,28 +1,22 @@
-package com.example.fomo
+package com.example.fomo.ui
 
 import android.app.Activity
-import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
-import android.location.LocationManager
-import android.location.LocationRequest
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fomo.Networking.FoodItem
 import com.example.fomo.Networking.retrofitInstance
+import com.example.fomo.R
 import com.example.fomo.databinding.FragmentLocationBinding
-import com.example.fomo.databinding.FragmentWeatherBinding
 import com.example.fomo.utils.Constants
 import com.example.fomo.utils.FoodAdapter
 import com.example.fomo.utils.onRecipeClicked
@@ -35,9 +29,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.jar.Manifest
-
-
 
 
 class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {

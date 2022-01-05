@@ -15,23 +15,23 @@
         android:theme="@style/Theme.Fomo">
         <activity
             android:screenOrientation="portrait"
-            android:name=".CartActivity"
+            android:name=".ui.CartActivity"
             android:exported="false" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".OrderActivity"
+            android:name=".ui.OrderActivity"
             android:exported="false" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".RecipeActivity"
+            android:name=".ui.RecipeActivity"
             android:exported="false" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".ForgotPassword"
+            android:name=".ui.ForgotPassword"
             android:exported="false" />
         <activity
             android:screenOrientation="portrait"
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
         </activity>
         <activity
             android:screenOrientation="portrait"
-            android:name=".SignupActivity"
+            android:name=".ui.SignupActivity"
             android:exported="false" />
         <activity
             android:screenOrientation="portrait"
