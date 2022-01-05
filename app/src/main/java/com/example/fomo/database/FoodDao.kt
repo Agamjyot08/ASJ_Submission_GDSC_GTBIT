@@ -16,4 +16,5 @@ interface FoodDao {
     fun getAllFood():LiveData<List<FoodEntity>>
     @Query("Select * from food_table where id=:id")
     fun getFoodById(id:Int):FoodEntity
+
 }
