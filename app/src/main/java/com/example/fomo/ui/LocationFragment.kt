@@ -92,7 +92,7 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
                     favList.add(FoodItem(element.description,element.image,element.name,element.recipe))
 
                 }
-                Log.d("Fav",favList.toString())
+
                 adapter.addFavList(favList)
             }
         })

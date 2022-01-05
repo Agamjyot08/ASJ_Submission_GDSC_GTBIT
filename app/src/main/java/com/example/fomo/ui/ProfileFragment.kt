@@ -51,7 +51,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding.orders.setOnClickListener{
             if (activity!=null)
-            startActivity(Intent(activity as Context, CartActivity::class.java))
+            startActivity(Intent(activity as Context, FavouritesActivity::class.java))
 
         }
     }
