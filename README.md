@@ -4,8 +4,11 @@
 Food is the best mood changer, and that's what we as Indians think of whenever there is a good weather outside, don't we? 
 There is nothing technology can't do! So, something like a mobile application could provide a solution to this. 
 
-## Proposed Solution
+## Proposed Solution & Screenshots
 How great would it be if there is a pleasant weather outside and you get to know the best recipes for the weather? This app does that. Our application recommends food on the basis of the weather at the user's location. We also thought of recommending the popular food recipes based on the user's current location, and hence, came up with a solution for that too. The app recommends dishes, both on the basis of weather and location, as well as shows teh recipes for each using youtube videos.
+
+<img width="824" alt="2022-01-10" src="https://user-images.githubusercontent.com/56999226/148780626-15a8b6d5-741a-493f-81e6-b9fcb5325e2b.png">
+<img width="653" alt="2022-01-10 (1)" src="https://user-images.githubusercontent.com/56999226/148780644-58161b7d-5c0d-4725-97e3-0533c340b0c9.png">
 
 ## Functionality & Concepts Used:
 * The app has a pretty basic user interface, a Bottom NavBar that helps users navigate through the Profile, Weather and Location fragment.
