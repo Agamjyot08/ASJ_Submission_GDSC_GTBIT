@@ -10,6 +10,8 @@ How great would it be if there is a pleasant weather outside and you get to know
 <img width="824" alt="2022-01-10" src="https://user-images.githubusercontent.com/56999226/148780626-15a8b6d5-741a-493f-81e6-b9fcb5325e2b.png">
 <img width="653" alt="2022-01-10 (1)" src="https://user-images.githubusercontent.com/56999226/148780644-58161b7d-5c0d-4725-97e3-0533c340b0c9.png">
 
+Screenshots Drive Link: https://drive.google.com/drive/folders/12ALjjzdqMhwyz5oTU0QCCMBrZD8SdNAD?usp=sharing
+
 ## Functionality & Concepts Used:
 * The app has a pretty basic user interface, a Bottom NavBar that helps users navigate through the Profile, Weather and Location fragment.
 * Relative Layout : We used relative layout for all our fragments.
@@ -21,3 +23,6 @@ How great would it be if there is a pleasant weather outside and you get to know
 ## Application Link and Future Scope
 Link: https://drive.google.com/file/d/1Paa6rW8JotnSOoxH-JDbSbF--Q54Iyxv/view?usp=sharing
 
+Scope:
+* Want to have something special but don't have the ingredients for that? We got you! Just order ingredients you need for cooking your dish, or tap the "Order" button and get the dish delivered to you!
+* Reaching out to the local retailers and home cooks, helping them grow and earn, as we aim to build a good business model.
