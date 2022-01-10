@@ -50,7 +50,8 @@ class FavouritesActivity : AppCompatActivity(),onRecipeClicked {
     }
 
     override fun onOrderClicked(item: FoodItem) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, OrderActivity::class.java)
+        startActivity(intent)
     }
 
     override fun insertFav(item: FoodEntity) {

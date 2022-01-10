@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CODES/app/ASJ_Submission_GDSC_GTBIT/app/src/main/res/drawable/custombg2.xml" value="0.18385416666666668" />
+        <entry key="..\:/CODES/app/ASJ_Submission_GDSC_GTBIT/app/src/main/res/drawable/custombg3.xml" value="0.18385416666666668" />
+        <entry key="..\:/CODES/app/ASJ_Submission_GDSC_GTBIT/app/src/main/res/drawable/custombg4.xml" value="0.18385416666666668" />
+        <entry key="..\:/CODES/app/ASJ_Submission_GDSC_GTBIT/app/src/main/res/drawable/custombg5.xml" value="0.18385416666666668" />
+        <entry key="..\:/CODES/app/ASJ_Submission_GDSC_GTBIT/app/src/main/res/layout/activity_order.xml" value="0.16770833333333332" />
+        <entry key="..\:/CODES/app/ASJ_Submission_GDSC_GTBIT/app/src/main/res/layout/activity_splash_screen.xml" value="0.16666666666666666" />
+        <entry key="..\:/CODES/app/ASJ_Submission_GDSC_GTBIT/app/src/main/res/layout/fragment_profile.xml" value="0.16770833333333332" />
+        <entry key="..\:/CODES/app/ASJ_Submission_GDSC_GTBIT/app/src/main/res/layout/item_food.xml" value="0.16770833333333332" />
         <entry key="..\:/CODES/app/fomoHack/fomo/app/src/main/res/layout/activity_forgot_password.xml" value="0.16770833333333332" />
         <entry key="..\:/CODES/app/fomoHack/fomo/app/src/main/res/layout/activity_login.xml" value="0.16770833333333332" />
         <entry key="..\:/CODES/app/fomoHack/fomo/app/src/main/res/layout/activity_main.xml" value="0.12" />

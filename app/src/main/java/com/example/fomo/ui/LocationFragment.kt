@@ -41,8 +41,8 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var binding : FragmentLocationBinding
     private lateinit var  adapter :FoodAdapter
-    lateinit var longitute : String
-    lateinit var latitude : String
+    var latitude : String = "28.6138954"
+     var longitute : String = "77.2090057"
     lateinit var sharedPreferences: SharedPreferences
     lateinit var foodViewModel: FoodViewModel
 
@@ -60,8 +60,6 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
         ){
             task.addOnSuccessListener {
                 if(it!=null){
-                    //Toast.makeText(activity as Context,"${it.latitude} ${it.longitude}",Toast.LENGTH_SHORT).show()
-
                     latitude=it.latitude.toString()
                     longitute=it.longitude.toString()
                 }
@@ -78,9 +76,9 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
         ActivityResultContracts.RequestPermission()
         RequestPermission()
         CheckPermisssion()
-        GlobalScope.launch {
-            fetchFoodData()
-        }
+
+        fetchFoodData()
+
         binding.recylerViewfoodweather.layoutManager = LinearLayoutManager(activity as Context)
         adapter = FoodAdapter(this)
         binding.recylerViewfoodweather.adapter = adapter
@@ -104,8 +102,8 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
         }
     }
 
-    suspend  fun fetchFoodData() {
-        delay(3000)
+     fun fetchFoodData() {
+
         val instance = retrofitInstance.api.getLocationDishes(latitude,longitute)
         instance.enqueue(object : Callback<List<FoodItem>> {
 
@@ -146,7 +144,8 @@ class LocationFragment : Fragment(R.layout.fragment_location), onRecipeClicked {
     }
 
     override fun onOrderClicked(item: FoodItem) {
-
+        val intent = Intent(requireContext(),OrderActivity::class.java)
+        startActivity(intent)
     }
 
     override fun insertFav(item: FoodEntity) {

@@ -52,7 +52,7 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
 
     //private val viewModel : FoodViewModel by viewModels<FoodViewModel>()
 
-    lateinit var weatherres : String
+     var weatherres : String = "cold"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,11 +67,8 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
         binding = FragmentWeatherBinding.bind(view)
         RequestPermission()
         CheckPermisssion()
+        Foodfetchdata()
 
-        GlobalScope.launch {
-
-            Foodfetchdata()
-        }
         binding.recylerViewFoodWeather.layoutManager = LinearLayoutManager(activity as Context)
         adapter = FoodAdapter(this)
         binding.recylerViewFoodWeather.adapter = adapter
@@ -89,9 +86,9 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
         })
     }
 
-    private suspend fun Foodfetchdata() {
+    private  fun Foodfetchdata() {
         // API CALL
-        delay(4000)
+
         Log.d("weather","$weatherres")
         val instance = retrofitInstance.api.getDishes(weatherres)
         instance.enqueue(object : Callback<List<FoodItem>>{
@@ -100,11 +97,6 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
                 call: Call<List<FoodItem>>,
                 response: Response<List<FoodItem>>
             ) {
-//                Toast.makeText(
-//                    activity as Context,
-//                    "Food Api Passes",
-//                    Toast.LENGTH_SHORT
-//                ).show()
                 val FoodItems = response.body()
                 if (FoodItems != null) {
                     adapter.updatelist(FoodItems)
@@ -154,22 +146,28 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
         ){
             task.addOnSuccessListener {
                 if(it!=null){
-                    //Toast.makeText(activity as Context,"${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
-                    apicall(it.latitude,it.longitude)
+
+                    apicall(it.latitude.toString(),it.longitude.toString())
+
+                }else
+                {
+                    apicall()
                 }
             }
         }
+
         RequestPermission()
         return
     }
 
 
 
-    private fun apicall(latitude: Double, longitude: Double) {
-        val instance = retrofitInstance.api.getWeather(latitude.toString(),longitude.toString())
+    private fun apicall(latitude: String = "28.6138954", longitude: String="77.2090057") {
+        val instance = retrofitInstance.api.getWeather(latitude,longitude)
         instance.enqueue(object : Callback<Weather>{
             override fun onResponse(call: retrofit2.Call<Weather>, response: Response<Weather>) {
                val weather = response.body()
+
                 if(weather!=null){
                     binding.cityTv.text = "${weather.city}"
                     val temp="${weather.temperature}°C"
@@ -212,7 +210,8 @@ class WeatherFragment : Fragment(R.layout.fragment_weather), onRecipeClicked {
     }
 
     override fun onOrderClicked(item: FoodItem) {
-        TODO("Not yet implemented")
+        val intent = Intent(requireContext(), OrderActivity::class.java)
+        startActivity(intent)
     }
 
     override fun insertFav(item: FoodEntity) {

@@ -182,8 +182,9 @@
                     android:layout_marginBottom="10dp"
                     android:text="Account"
                     android:textColor="#3A3B70"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
 
                 <TextView
                     android:id="@+id/favorites"
@@ -231,8 +232,10 @@
                     android:layout_marginBottom="10dp"
                     android:text="Coming Soon"
                     android:textColor="#3A3B70"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    />
 
                 <TextView
                     android:id="@+id/cart"
