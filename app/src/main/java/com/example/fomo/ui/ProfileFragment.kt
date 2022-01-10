@@ -50,9 +50,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         binding.orders.setOnClickListener{
-            if (activity!=null)
-            startActivity(Intent(activity as Context, FavouritesActivity::class.java))
+            if(activity!=null)
+                startActivity(Intent(activity as Context, OrderActivity::class.java))
 
+        }
+        binding.favorites.setOnClickListener {
+            if (activity!=null)
+                startActivity(Intent(activity as Context, FavouritesActivity::class.java))
         }
     }
 
