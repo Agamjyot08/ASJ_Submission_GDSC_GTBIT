@@ -7,8 +7,8 @@ There is nothing technology can't do! So, something like a mobile application co
 ## Proposed Solution & Screenshots
 How great would it be if there is a pleasant weather outside and you get to know the best recipes for the weather? This app does that. Our application recommends food on the basis of the weather at the user's location. We also thought of recommending the popular food recipes based on the user's current location, and hence, came up with a solution for that too. The app recommends dishes, both on the basis of weather and location, as well as shows teh recipes for each using youtube videos.
 
-<img width="824" alt="2022-01-10" src="https://user-images.githubusercontent.com/56999226/148780626-15a8b6d5-741a-493f-81e6-b9fcb5325e2b.png">
-<img width="653" alt="2022-01-10 (1)" src="https://user-images.githubusercontent.com/56999226/148780644-58161b7d-5c0d-4725-97e3-0533c340b0c9.png">
+![image](https://user-images.githubusercontent.com/56999226/148815106-e541b643-8189-4366-9952-bcced011af9d.png)
+![image](https://user-images.githubusercontent.com/56999226/148815047-0c1b2ae5-8bca-4d5b-b262-02d26fa743be.png)
 
 Screenshots Drive Link: https://drive.google.com/drive/folders/12ALjjzdqMhwyz5oTU0QCCMBrZD8SdNAD?usp=sharing
 
