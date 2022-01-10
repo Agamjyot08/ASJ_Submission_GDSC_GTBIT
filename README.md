@@ -12,12 +12,9 @@ How great would it be if there is a pleasant weather outside and you get to know
 * Relative Layout : We used relative layout for all our fragments.
 * RecyclerView : To display the list of different food items, we used RecyclerView.
 * Retrofit: We used some publically available APIs such as Weather Stack and OpenWeatherMap API, used them to extract the required data into our own created API endpoints, to use in the application.
-* LiveData & Room Database : We are also using LiveData to update & observe any changes in the user's location or weather, Recipes can also be added to your . Coordinates are then updated in the bus route screen and students can track their route bus locations.
+* LiveData & Room Database : We are also using LiveData to update & observe any changes in the user's location or weather, Recipes can also be added to your favorites! To save those dishes you like, just tap the heart button on any dish and the dish is stored in your favorites using Room Database.
+* Firebase: For user signup and sign-in.
 
-### Tech Stack
-Retrofit
-Firebase
-NodeJS for creating APIs
+## Application Link and Future Scope
+Link: https://drive.google.com/file/d/1Paa6rW8JotnSOoxH-JDbSbF--Q54Iyxv/view?usp=sharing
 
-## Application Link
-https://drive.google.com/file/d/1XZYHRjmM64vT4qRkNrqKbXSoDISxWCOK/view?usp=sharing
