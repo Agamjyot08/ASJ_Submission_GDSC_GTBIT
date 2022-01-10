@@ -18,6 +18,8 @@ Screenshots Drive Link: https://drive.google.com/drive/folders/12ALjjzdqMhwyz5oT
 * RecyclerView : To display the list of different food items, we used RecyclerView.
 * Retrofit: We used some publically available APIs such as Weather Stack and OpenWeatherMap API, used them to extract the required data into our own created API endpoints, to use in the application.
 * LiveData & Room Database : We are also using LiveData to update & observe any changes in the user's location or weather, Recipes can also be added to your favorites! To save those dishes you like, just tap the heart button on any dish and the dish is stored in your favorites using Room Database.
+* MVVM: MVVM architecture is used.
+* Navigation: Navigation is used to navigate between different fragments and activities.
 * Firebase: For user signup and sign-in.
 
 ## Application Link and Future Scope
