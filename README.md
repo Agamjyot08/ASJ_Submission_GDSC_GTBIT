@@ -1,24 +1,18 @@
-# Fomo
+# Android Study Jams- GDSC Guru Tegh Bahadur Institute of Technology, Delhi
 
-## Proposed Solution and Screenshots
-![3](https://user-images.githubusercontent.com/55504132/147419069-d41d2463-3e2b-4d36-8495-bb52506e83d3.jpeg)![1](https://user-images.githubusercontent.com/55504132/147419071-930cf85c-8a69-4ce7-9d61-c89e1c065bd9.jpeg)![2](https://user-images.githubusercontent.com/55504132/147419072-38c4773b-6a75-4224-ac35-e327e9c32727.jpeg)
+## Problem Statement
+Food is the best mood changer, and that's what we as Indians think of whenever there is a good weather outside, don't we? 
+There is nothing technology can't do! So, something like a mobile application could provide a solution to this. 
 
-
-Food is the best mood changer, and that's
-what we as Indians think of whenever there
-is a good weather outside, don't we?
-The app recommends the recipes to the user!
-
-How great would it be if there is a pleasant weather outside and you get to know the best recipes for the weather?
-
-We also thought of recommending the popular food recipes based on the user's current location.
-
+## Proposed Solution
+How great would it be if there is a pleasant weather outside and you get to know the best recipes for the weather? This app does that. Our application recommends food on the basis of the weather at the user's location. We also thought of recommending the popular food recipes based on the user's current location, and hence, came up with a solution for that too. The app recommends dishes, both on the basis of weather and location, as well as shows teh recipes for each using youtube videos.
 
 ## Functionality & Concepts Used:
-
-Weather Stack API
-OpenWeatherMap API
-We created our own APIs by extracting required data from a few open source APIs!
+* The app has a pretty basic user interface, a Bottom NavBar that helps users navigate through the Profile, Weather and Location fragment.
+* Relative Layout : We used relative layout for all our fragments.
+* RecyclerView : To display the list of different food items, we used RecyclerView.
+* Retrofit: We used some publically available APIs such as Weather Stack and OpenWeatherMap API, used them to extract the required data into our own created API endpoints, to use in the application.
+* LiveData & Room Database : We are also using LiveData to update & observe any changes in the user's location or weather, Recipes can also be added to your . Coordinates are then updated in the bus route screen and students can track their route bus locations.
 
 ### Tech Stack
 Retrofit
